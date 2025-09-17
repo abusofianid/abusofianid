@@ -10,25 +10,37 @@ I’m passionate about **data and design** — I enjoy turning messy numbers int
 
 ---
 ### 🚀 My Projects
-- [Simple E-Commerce Sales Analytics](https://github.com/abusofianid/simple-ecommerce-sales-analytics)  
-  Analyzed sales data using Excel & Python to uncover insights about revenue, top products, and customer trends.  
-- kfjgljgd
+- **[Simple E-Commerce Sales Analytics](https://github.com/abusofianid/simple-ecommerce-sales-analytics)**
+  Analyzed sales data using Excel, IBM Granite, Canva, and more to uncover insights about revenue, top products, and customer trends. 
+- **[Synthetic E-Commerce Sales Data Generator](https://github.com/abusofianid/sales-data-generator)**
+  A Python-based project that generates synthetic Indonesian e-commerce sales data with realistic variations, anomalies, duplicates, and inconsistencies.   Useful for practicing data cleaning, preprocessing, and analytics workflows.
+- **(coming Soon)**
 ---
 ### 📝 A Handbook I Wrote
-- [Handbook Collection](https://github.com/abusofianid/handbook)  
-  A place where I collect and share different handbooks I’ve written on data, AI, design, and more.    
+- **[Handbook Collection](https://github.com/abusofianid/handbooks)**
+ A collection of handbooks I wrote about data, AI, design, and more.   
 --- 
 
 ### 🌐 Connect with me  
+<a href="mailto:abussofian.id@gmail.com">
+  <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" height="30" width="100"/>
+</a>
+<a href="https://www.linkedin.com/in/abusofianid/">
+  <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100"/>
+</a>
+<a href="https://www.kaggle.com/abusofianid">
+  <img src="https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=Kaggle&logoColor=white" height="30" width="100"/>
+</a>
 
-<p align="left">  
 
-</p>  
 
 ---
 
 ### 📈 Stats summary  
 
-<p>  
- 
-</p>  
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=abusofianid&hide=contribs,prs&show_icons=true&text_color=ffffff&bg_color=000000&title_color=0184E8&icon_color=0184E8&=true&border_radius=10&border_color=0184E8&card_width=450)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=abusofianid&card_width=450&layout=compact&border_radius=10&title_color=0184E8&bg_color=000000&text_color=ffffff&border_color=0184E8)](https://github.com/anuraghazra/github-readme-stats)
+
+
+
+
