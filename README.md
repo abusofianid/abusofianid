@@ -1,4 +1,4 @@
-![Header](./your-header-image-name.png)
+![Header](./banner.png)
 I’m passionate about **data and design** — I enjoy turning messy numbers into clear stories and exploring how tech can solve real problems. I like to keep learning, experimenting, and sharing what I find along the way.  
 
 - 🌱 **Currently exploring:** Data Analytics, AI & Creative Design  
