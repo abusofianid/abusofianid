@@ -10,16 +10,16 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 ---
 ### My Projects
-- **[Simple E-Commerce Sales Analytics](https://github.com/abusofianid/simple-ecommerce-sales-analytics)**
+- **[Simple E-Commerce Sales Analytics](https://github.com/abusofianid/simple-ecommerce-sales-analytics)** <br>
   Analyzed sales data using Excel, IBM Granite, Canva, and more to uncover insights about revenue, top products, and customer trends. 
-- **[Synthetic E-Commerce Sales Data Generator](https://github.com/abusofianid/sales-data-generator)**
+- **[Synthetic E-Commerce Sales Data Generator](https://github.com/abusofianid/sales-data-generator)** </br>
   A Python-based project that generates synthetic Indonesian e-commerce sales data with realistic variations, anomalies, duplicates, and inconsistencies.   Useful for practicing data cleaning, preprocessing, and analytics workflows.
 - **(coming Soon)**
 
 ---
-### A Handbook I Wrote
-- **[Handbook Collection](https://github.com/abusofianid/handbooks)**
-A collection of handbooks I wrote about data, AI, design, and more.
+### My Book Collection
+- **[Explore the Collection](https://github.com/abusofianid/my-book-collection)** </br>
+A collection of my writings on technology, society, culture, politics, education, and more.
 
 --- 
 ### Connect with me  
