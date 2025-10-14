@@ -30,13 +30,13 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
   A reference list of useful software tools, data platforms, and emerging technologies.
 
 > **Extended Portfolios**
-- [Kaggle](https://www.kaggle.com/abusofianid)
+- [Kaggle](https://www.kaggle.com/abusofianid) </br>
   Data science, machine learning competitions, community-shared datasets, and interactive notebooks.
-- [Hugging Face](https://huggingface.co/abusofianid)
+- [Hugging Face](https://huggingface.co/abusofianid) </br>
   AI model experiments, datasets, demos, and machine learning innovations.
-- [Behance](www.behance.net/abusofianid)
+- [Behance](www.behance.net/abusofianid) </br>
   Visual work, infographics, and design projects.
-- [Medium](https://medium.com/@abusofianid)
+- [Medium](https://medium.com/@abusofianid) </br>
   Personal blog of articles, ideas, and insights.
 
 ---
