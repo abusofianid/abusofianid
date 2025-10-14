@@ -9,7 +9,7 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 
 ---
- <a href="https://www.w3schools.com">Visit W3Schools.com!</a> 
+
 ### Portfolio & Projects
 
 > **Data Analytics & Visualization**
