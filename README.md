@@ -12,24 +12,24 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 ### Portfolio & Projects
 
-> **Data Analytics & Visualization**
+⭐ **Data Analytics & Visualization**
 
 - [Simple E-Commerce Sales Analytics](https://github.com/abusofianid/simple-ecommerce-sales-analytics) <br>
   Performs sales data analysis and visualization to uncover business insights from e-commerce datasets.
 
-> **AI, Machine Learning & Modeling**
+⭐ **AI, Machine Learning & Modeling**
 - [Synthetic E-Commerce Sales Data Generator](https://github.com/abusofianid/sales-data-generator) </br>
   Generates synthetic e-commerce sales data for analytics, simulation, and model testing.
 - [Simple House Price Predictor](https://github.com/abusofianid/simple-house-price-predictor) </br>
   Builds a regression-based model to predict house prices using property data.
 
-> **Tech Resources & Learning**
+⭐ **Tech Resources & Learning**
 - [Explore the Collection](https://github.com/abusofianid/my-book-collection) </br>
   A collection of original books and writings authored by Abu Sofian, focusing on data, AI, and technology topics.
 - [Tech Platform List](https://github.com/abusofianid/tech-platform-list) </br>
   A reference list of useful software tools, data platforms, and emerging technologies.
 
-> **Extended Portfolios**
+⭐ **Extended Portfolios**
 - [Kaggle](https://www.kaggle.com/abusofianid) </br>
   Data science, machine learning competitions, community-shared datasets, and interactive notebooks.
 - [Hugging Face](https://huggingface.co/abusofianid) </br>
