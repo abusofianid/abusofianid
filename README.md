@@ -41,14 +41,15 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 ---
 
-### Connect with me
+### Frameworks & Runtimes
 
-<a href="mailto:abussofian.id@gmail.com">
-  <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" height="30" width="100"/>
-</a>
-<a href="https://www.linkedin.com/in/abusofianid/">
-  <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="30" width="100"/>
-</a>
+[![My Skills](https://skillicons.dev/icons?i=django,fastapi,react,nextjs,bun)](https://skillicons.dev)
+
+---
+
+### Languages & Web Technologies
+
+[![My Skills](https://skillicons.dev/icons?i=py,rust,go,js,ts,html,css,tailwind,docker,git,github)](https://skillicons.dev)
 
 ---
 
