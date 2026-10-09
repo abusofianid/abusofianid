@@ -55,5 +55,5 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 ### Stats summary
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=abusofianid&hide=contribs,prs&show_icons=true&text_color=ffffff&bg_color=000000&title_color=0184E8&icon_color=0184E8&=true&border_radius=10&border_color=0184E8&card_width=450)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=abusofianid&card_width=450&layout=compact&border_radius=10&title_color=0184E8&bg_color=000000&text_color=ffffff&border_color=0184E8)](https://github.com/anuraghazra/github-readme-stats)
+[![GitHub stats](https://github-stats-extended.vercel.app/api?username=abusofianid&show_icons=true&rank_icon=github&text_color=ffffff&bg_color=000000&title_color=8A3FFC&icon_color=8A3FFC&=true&border_radius=10&border_color=8A3FFC&card_width=450&include_all_commits=true)](https://github-stats-extended.vercel.app/api?username=abusofianid&show_icons=true&rank_icon=github&text_color=ffffff&bg_color=000000&title_color=8A3FFC&icon_color=8A3FFC&=true&border_radius=10&border_color=8A3FFC&card_width=450&include_all_commits=true)
+[![Top Langs](https://github-stats-extended.vercel.app/api/top-langs/?username=abusofianid&card_width=450&layout=compact&border_radius=10&title_color=8A3FFC&bg_color=000000&text_color=ffffff&border_color=8A3FFC)](https://github-stats-extended.vercel.app/api/top-langs/?username=abusofianid&card_width=450&layout=compact&border_radius=10&title_color=8A3FFC&bg_color=000000&text_color=ffffff&border_color=8A3FFC)
