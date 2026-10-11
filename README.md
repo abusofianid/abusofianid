@@ -49,7 +49,7 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 ### Languages & Web Technologies
 
-[![My Languanges](https://skills.syvixor.com/api/icons?i=py,rust,go,js,ts,html,css,tailwind,docker,git,github)](https://skills.syvixor.com)
+[![My Languanges](https://skills.syvixor.com/api/icons?i=python,rust,go,js,ts,html,css,tailwind,rest,docker,git,github)](https://skills.syvixor.com)
 
 ---
 
