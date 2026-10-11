@@ -55,7 +55,7 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 ### Tools & Environment
 
-[![My Languanges](https://skills.syvixor.com/api/icons?i=fedora,windows,firefox,zed,bruno,claudeai,discord,vlc)](https://skills.syvixor.com)
+[![My Languanges](https://skills.syvixor.com/api/icons?i=fedora,windows,firefox,zed,astraluv,bruno,claudeai,discord,vlc)](https://skills.syvixor.com)
 
 ---
 
