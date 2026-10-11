@@ -43,13 +43,13 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 ### Frameworks & Runtimes
 
-[![My Skills](https://skillicons.dev/icons?i=django,fastapi,react,nextjs,bun)](https://skillicons.dev)
+[![My Skills](https://skills.syvixor.com/api/icons?i=django,fastapi,gin,react,nextjs,bun)](https://skills.syvixor.com)
 
 ---
 
 ### Languages & Web Technologies
 
-[![My Skills](https://skillicons.dev/icons?i=py,rust,go,js,ts,html,css,tailwind,docker,git,github)](https://skillicons.dev)
+[![My Languanges](https://skills.syvixor.com/api/icons?i=py,rust,go,js,ts,html,css,tailwind,docker,git,github)](https://skills.syvixor.com)
 
 ---
 
