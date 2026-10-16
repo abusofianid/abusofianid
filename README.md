@@ -9,20 +9,31 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 ---
 
 ### Frameworks & Runtimes
+<p align="center">
 
-[![My Skills](https://skills.syvixor.com/api/icons?i=django,fastapi,gin,react,nextjs,bun)](https://skills.syvixor.com)
+<img src="https://skills.syvixor.com/api/icons?i=django,fastapi,gin,react,nextjs,bun&perline=6"/>
+  
+</p>
 
 ---
 
 ### Languages & Web Technologies
 
-[![My Languanges](https://skills.syvixor.com/api/icons?i=python,rust,go,js,ts,html,css,tailwind,rest,docker,git,github,googleworkspace)](https://skills.syvixor.com)
+<p align="center">
+
+<img src="https://skills.syvixor.com/api/icons?i=python,rust,go,js,ts,html,css,tailwind,rest,docker,git,github,googleworkspace&perline=6"/>
+
+</p>
 
 ---
 
 ### Tools & Environment
 
-[![My Languanges](https://skills.syvixor.com/api/icons?i=fedora,windows,firefox,zed,astraluv,bruno,claudeai,discord,vlc)](https://skills.syvixor.com)
+<p align="center">
+
+<img src="https://skills.syvixor.com/api/icons?i=fedora,windows,firefox,zed,astraluv,bruno,claudeai,discord,vlc&perline=6"/>
+
+</p>
 
 ---
 
