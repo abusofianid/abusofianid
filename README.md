@@ -21,7 +21,8 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 <p align="center">
 
-<img src="https://skills.syvixor.com/api/icons?i=python,rust,go,js,ts,html,css,tailwind,rest,docker,git,github,googleworkspace&perline=6"/>
+<img src="https://skills.syvixor.com/api/icons?i=python,rust,go,js,ts,html&perline=6"/>
+<img src="https://skills.syvixor.com/api/icons?i=css,tailwind,rest,docker,git,github&perline=6"/>
 
 </p>
 
@@ -31,7 +32,9 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 <p align="center">
 
-<img src="https://skills.syvixor.com/api/icons?i=fedora,windows,firefox,zed,astraluv,bruno,claudeai,discord,vlc&perline=6"/>
+<img src="https://skills.syvixor.com/api/icons?i=fedora,windows,firefox,zed,astraluv,bruno,=6"/>
+<img src="https://skills.syvixor.com/api/icons?i=claudeai,discord,vlc&perline=6"/>
+
 
 </p>
 
