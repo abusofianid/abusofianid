@@ -39,8 +39,7 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 ### Stats Summary
 
 <img src="github-stats.svg" alt="GitHub Stats" />
+<img src="github-top-langs.svg" alt="Top Languages" />
 
-
-[![Top Langs](https://github-stats-extended.vercel.app/api/top-langs/?username=abusofianid&card_width=450&layout=compact&border_radius=10&title_color=8A3FFC&bg_color=000000&text_color=ffffff&border_color=8A3FFC)](https://github-stats-extended.vercel.app/api/top-langs/?username=abusofianid&card_width=450&layout=compact&border_radius=10&title_color=8A3FFC&bg_color=000000&text_color=ffffff&border_color=8A3FFC)
 
 </div>
