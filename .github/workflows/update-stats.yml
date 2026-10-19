@@ -4,10 +4,10 @@ on:
   schedule:
     # Berjalan otomatis setiap jam 00:00 UTC (sekitar jam 08:00 WITA)
     - cron: "0 0 * * *"
-  workflow_dispatch: # Menambahkan tombol agar bisa dijalankan manual kapan saja
+  workflow_dispatch: # Menambahkan tombol agar bisa dijalankan manual
 
 permissions:
-  contents: write # Izin wajib agar bot bisa melakukan commit ke repositori
+  contents: write
 
 jobs:
   update-stats:
@@ -16,14 +16,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Fetch GitHub Stats SVG
-        # Mengunduh gambar API dan menyimpannya sebagai file github-stats.svg
-        run: curl -o github-stats.svg "https://github-stats-extended.vercel.app/api?username=abusofianid&show_icons=true&rank_icon=github&text_color=ffffff&bg_color=000000&title_color=8A3FFC&icon_color=8A3FFC&border_radius=10&border_color=8A3FFC&card_width=450&include_all_commits=true&show=contributions,all_time_contribs&hide=contribs,prs&contribs_include_own_repos=true"
+      - name: Fetch GitHub Stats & Top Langs SVG
+        run: |
+          # Mengunduh Kartu Statistik Utama
+          curl -o github-stats.svg "https://github-stats-extended.vercel.app/api?username=abusofianid&show_icons=true&rank_icon=github&text_color=ffffff&bg_color=000000&title_color=8A3FFC&icon_color=8A3FFC&border_radius=10&border_color=8A3FFC&card_width=450&include_all_commits=true&show=contributions,all_time_contribs&hide=contribs,prs&contribs_include_own_repos=true"
+          
+          # Mengunduh Kartu Top Languages
+          curl -o github-top-langs.svg "https://github-stats-extended.vercel.app/api/top-langs/?username=abusofianid&card_width=450&layout=compact&border_radius=10&title_color=8A3FFC&bg_color=000000&text_color=ffffff&border_color=8A3FFC"
 
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add github-stats.svg
-          git commit -m "Update GitHub stats SVG otomatis" || echo "Tidak ada perubahan data"
+          
+          # Menambahkan kedua file SVG agar disimpan oleh bot
+          git add github-stats.svg github-top-langs.svg
+          
+          git commit -m "Update GitHub Stats & Top Langs otomatis" || echo "Tidak ada perubahan data"
           git push
