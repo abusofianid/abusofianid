@@ -4,6 +4,7 @@ import html
 import json
 import os
 import sys
+import traceback
 import urllib.error
 import urllib.request
 from collections import defaultdict
@@ -167,4 +168,5 @@ def main():
 if __name__=="__main__":
     try: main()
     except Exception as exc:
+        traceback.print_exc()
         print(f"ERROR: {exc}",file=sys.stderr); sys.exit(1)
