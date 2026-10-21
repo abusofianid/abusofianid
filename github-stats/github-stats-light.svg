@@ -4,14 +4,16 @@
 <rect x="1" y="1" width="458" height="244" rx="12" fill="#ffffff" stroke="#6e7781"/>
 <text x="24" y="32" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#1f2328" text-anchor="start">Abu Sofian&#x27;s GitHub Stats</text>
 <line x1="24" y1="45" x2="436" y2="45" stroke="#6e7781" stroke-opacity=".65"/>
-<text x="26" y="78" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Stars Earned</text>
-<text x="434" y="78" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">13</text>
-<text x="26" y="112" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Contributions</text>
-<text x="434" y="112" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">794</text>
-<text x="26" y="146" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Commits</text>
-<text x="434" y="146" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">745</text>
-<text x="26" y="180" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Issues</text>
-<text x="434" y="180" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">7</text>
-<text x="26" y="214" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Repositories Contributed To</text>
-<text x="434" y="214" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">16</text>
+<text x="26" y="72" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Contributions</text>
+<text x="434" y="72" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">794</text>
+<text x="26" y="101" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Commits</text>
+<text x="434" y="101" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">747</text>
+<text x="26" y="130" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Issues Opened</text>
+<text x="434" y="130" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">7</text>
+<text x="26" y="159" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Pull Requests</text>
+<text x="434" y="159" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">20</text>
+<text x="26" y="188" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Stars Earned</text>
+<text x="434" y="188" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">13</text>
+<text x="26" y="217" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Repositories Contributed To</text>
+<text x="434" y="217" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">16</text>
 </svg>
