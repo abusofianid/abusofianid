@@ -4,7 +4,6 @@ import html
 import json
 import os
 import sys
-import traceback
 import urllib.error
 import urllib.request
 from collections import defaultdict
@@ -95,7 +94,7 @@ def collect():
         conn = user_data.get("repositoriesContributedTo")
         if conn is None:
             raise RuntimeError("GitHub returned no contributed-repository connection; check token access and GraphQL permissions.")
-        contributed_repos.update(node["nameWithOwner"] for node in (conn.get("nodes") or []))
+        contributed_repos.update(node["nameWithOwner"] for node in (conn.get("nodes") or []) if node and node.get("nameWithOwner"))
         page_info = conn.get("pageInfo") or {"hasNextPage":False,"endCursor":None}
         if not page_info["hasNextPage"]:
             break
@@ -168,5 +167,4 @@ def main():
 if __name__=="__main__":
     try: main()
     except Exception as exc:
-        traceback.print_exc()
         print(f"ERROR: {exc}",file=sys.stderr); sys.exit(1)
