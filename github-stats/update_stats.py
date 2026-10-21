@@ -41,6 +41,17 @@ query($login:String!,$cursor:String) {
  }
 }
 """
+ACCESSIBLE_REPOS_QUERY = """
+query($cursor:String) {
+ viewer {
+  repositories(first:100,after:$cursor,affiliations:[OWNER,COLLABORATOR,ORGANIZATION_MEMBER],orderBy:{field:NAME,direction:ASC}) {
+   pageInfo { hasNextPage endCursor }
+   nodes { nameWithOwner }
+  }
+ }
+}
+"""
+
 CONTRIB_QUERY = """
 query($login:String!,$from:DateTime!,$to:DateTime!) {
  user(login:$login) {
@@ -94,6 +105,66 @@ def rest_json(url):
             return json.load(response)
     except urllib.error.HTTPError as exc:
         raise RuntimeError(f"GitHub REST API HTTP {exc.code}: {exc.read().decode('utf-8','replace')[:400]}") from exc
+
+
+def count_authored_commits():
+    """Count unique commits authored by LOGIN across every accessible repository and branch.
+
+    The token can only reveal repositories it has permission to access. Commit SHAs are
+    deduplicated across branches and repositories so merges and shared history are not
+    counted multiple times. Fail rather than publish a partial total if an API request fails.
+    """
+    repositories, cursor = [], None
+    while True:
+        data = graphql(ACCESSIBLE_REPOS_QUERY, {"cursor": cursor})["viewer"]["repositories"]
+        repositories.extend(node["nameWithOwner"] for node in data["nodes"])
+        if not data["pageInfo"]["hasNextPage"]:
+            break
+        cursor = data["pageInfo"]["endCursor"]
+        if not cursor:
+            raise RuntimeError("Missing accessible-repository pagination cursor.")
+
+    unique_shas = set()
+    for repository in repositories:
+        encoded_repo = urllib.parse.quote(repository, safe="/")
+        page = 1
+        branches = []
+        while True:
+            batch = rest_json(f"https://api.github.com/repos/{encoded_repo}/branches?per_page=100&page={page}")
+            if not isinstance(batch, list):
+                raise RuntimeError(f"Unexpected branch response for {repository}.")
+            branches.extend(branch["name"] for branch in batch if branch.get("name"))
+            if len(batch) < 100:
+                break
+            page += 1
+
+        for branch in branches:
+            page = 1
+            encoded_branch = urllib.parse.quote(branch, safe="")
+            while True:
+                url = (
+                    f"https://api.github.com/repos/{encoded_repo}/commits?"
+                    + urllib.parse.urlencode({
+                        "author": LOGIN,
+                        "sha": branch,
+                        "per_page": 100,
+                        "page": page,
+                    })
+                )
+                batch = rest_json(url)
+                if not isinstance(batch, list):
+                    raise RuntimeError(f"Unexpected commit response for {repository} branch {branch}.")
+                for commit in batch:
+                    sha = commit.get("sha")
+                    if sha:
+                        unique_shas.add(sha)
+                if len(batch) < 100:
+                    break
+                page += 1
+
+    print(f"Counted {len(unique_shas)} unique authored commits across {len(repositories)} accessible repositories and their branches.")
+    return len(unique_shas)
+
 
 def count_authored_items(search_type, label):
     """Count unique issues or pull requests authored by the account across accessible repositories."""
@@ -153,7 +224,7 @@ def collect():
     for year in range(2008, year_now + 1):
         c = graphql(CONTRIB_QUERY, {"login":LOGIN,"from":f"{year}-01-01T00:00:00Z","to":f"{year}-12-31T23:59:59Z"})["user"]["contributionsCollection"]
         totals["contributions"] += c["contributionCalendar"]["totalContributions"]
-        totals["commits"] += c["totalCommitContributions"]
+        # GitHub contribution commit counts are retained as profile-contribution data only;\n        # Total Commits is computed from accessible repository branches below.
         # Contribution-calendar categories remain useful API data, but the displayed
         # issue and PR totals below count unique authored items across all statuses.
     contributed_repos, contributed_cursor = set(), None
@@ -171,7 +242,7 @@ def collect():
         if not contributed_cursor:
             raise RuntimeError("Missing contributed-repository pagination cursor.")
 
-    totals["issues"] = count_authored_items("issue", "Total Issues Opened")
+    totals["commits"] = count_authored_commits()\n    totals["issues"] = count_authored_items("issue", "Total Issues Opened")
     totals["pulls"] = count_authored_items("pr", "Total Pull Requests")
     total_bytes = sum(langs.values())
     top = sorted(langs.items(), key=lambda item:item[1], reverse=True)[:6]
