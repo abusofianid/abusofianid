@@ -17,6 +17,16 @@ THEMES = {
     "dark": {"bg": "#0d1117", "text": "#f0f6fc", "muted": "#c9d1d9", "border": "#8b949e", "panel": "#161b22", "bars": ["#f0f6fc", "#c9d1d9", "#8b949e", "#6e7681", "#484f58", "#30363d"]},
     "light": {"bg": "#ffffff", "text": "#1f2328", "muted": "#424a53", "border": "#6e7781", "panel": "#f6f8fa", "bars": ["#24292f", "#424a53", "#57606a", "#6e7781", "#8c959f", "#afb8c1"]},
 }
+LANGUAGE_COLORS = {
+    "TypeScript":"#3178c6", "JavaScript":"#f1e05a", "CSS":"#663399", "HTML":"#e34c26",
+    "Python":"#3572A5", "Rust":"#dea584", "Shell":"#89e051", "Go":"#00ADD8",
+    "Java":"#b07219", "C":"#555555", "C++":"#f34b7d", "C#":"#178600",
+    "PHP":"#4F5D95", "Ruby":"#701516", "Kotlin":"#A97BFF", "Swift":"#F05138",
+    "Dart":"#00B4AB", "Vue":"#41b883", "Svelte":"#ff3e00", "SCSS":"#c6538c",
+    "Jupyter Notebook":"#DA5B0B", "Makefile":"#427819", "Dockerfile":"#384d54",
+    "CMake":"#DA3434", "Lua":"#000080", "Elixir":"#6e4a7e", "Haskell":"#5e5086",
+    "R":"#198CE7", "Zig":"#ec915c", "Nix":"#7e7eff", "Astro":"#ff5a03",
+}
 REPOS_QUERY = """
 query($login:String!,$cursor:String) {
  user(login:$login) {
@@ -144,13 +154,15 @@ def langs_svg(d,mode):
         x,bar_y,bar_w=24,52,412
         s.append(f'<rect x="{x}" y="{bar_y}" width="{bar_w}" height="10" rx="5" fill="{p["panel"]}"/>')
         cursor=x
-        for i,(_,pct) in enumerate(langs):
+        for i,(name,pct) in enumerate(langs):
+            color=LANGUAGE_COLORS.get(name, p["bars"][i%len(p["bars"])])
             seg=bar_w*pct/100
             if seg>0:
-                s.append(f'<rect x="{cursor:.2f}" y="{bar_y}" width="{seg:.2f}" height="10" fill="{p["bars"][i%len(p["bars"])]}"/>'); cursor+=seg
+                s.append(f'<rect x="{cursor:.2f}" y="{bar_y}" width="{seg:.2f}" height="10" fill="{color}"/>'); cursor+=seg
         for i,(name,pct) in enumerate(langs):
             col=0 if i<3 else 1; row=i if i<3 else i-3; x0=24+col*210; y=91+row*38
-            s += [f'<circle cx="{x0+5}" cy="{y-4}" r="4" fill="{p["bars"][i%len(p["bars"])]}"/>',tx(x0+16,y,name,p["text"],12,600),tx(x0+190,y,f"{pct:.1f}%",p["muted"],11,500,"end")]
+            color=LANGUAGE_COLORS.get(name, p["bars"][i%len(p["bars"])])
+            s += [f'<circle cx="{x0+5}" cy="{y-4}" r="4" fill="{color}"/>',tx(x0+16,y,name,p["text"],12,600),tx(x0+190,y,f"{pct:.1f}%",p["muted"],11,500,"end")]
     s += [tx(24,204,f'Aggregated over {d["repo_count"]} owned repositories (private included)',p["muted"],9),"</svg>"]
     return "\n".join(s)+"\n"
 
