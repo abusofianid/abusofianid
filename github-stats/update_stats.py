@@ -191,18 +191,18 @@ def stats_svg(d, mode):
 
 def langs_svg(d,mode):
     """Render the language-usage card for the selected theme."""
-    p=THEMES[mode]; s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="460" height="220" viewBox="0 0 460 220" role="img" aria-labelledby="title desc">',
+    p=THEMES[mode]; s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="460" height="246" viewBox="0 0 460 246" role="img" aria-labelledby="title desc">',
         f'<title id="title">Most Used Languages · {html.escape(LOGIN)}</title>',
         '<desc id="desc">Language bytes aggregated across all owner repositories accessible to the token, including private repositories.</desc>',
-        f'<rect x="1" y="1" width="458" height="218" rx="12" fill="{p["bg"]}" stroke="{p["border"]}"/>',
+        f'<rect x="1" y="1" width="458" height="244" rx="12" fill="{p["bg"]}" stroke="{p["border"]}"/>',
         tx(24,32,"Most Used Languages",p["text"],18,700),
         f'<line x1="24" y1="45" x2="436" y2="45" stroke="{p["border"]}" stroke-opacity=".65"/>']
     langs=d["languages"]
     if not langs:
         s.append(tx(24,80,"No language data available",p["muted"]))
     else:
-        # Match the 33 px divider-to-content spacing used by the main stats card.
-        x,bar_y,bar_w=24,78,412
+        # Keep the divider-to-chart spacing aligned with the main stats card.
+        x,bar_y,bar_w=26,78,408
         s.append(f'<rect x="{x}" y="{bar_y}" width="{bar_w}" height="10" rx="5" fill="{p["panel"]}"/>')
         cursor=x
         for i,(name,pct) in enumerate(langs):
@@ -211,10 +211,10 @@ def langs_svg(d,mode):
             if seg>0:
                 s.append(f'<rect x="{cursor:.2f}" y="{bar_y}" width="{seg:.2f}" height="10" fill="{color}"/>'); cursor+=seg
         for i,(name,pct) in enumerate(langs):
-            # Move language labels down with the bar while preserving even row spacing.
-            col=0 if i<3 else 1; row=i if i<3 else i-3; x0=24+col*210; y=117+row*38
+            # Use the same 34 px row rhythm as the main stats card.
+            col=0 if i<3 else 1; row=i if i<3 else i-3; x0=26+col*204; y=112+row*34
             color=LANGUAGE_COLORS.get(name, p["bars"][i%len(p["bars"])])
-            s += [f'<circle cx="{x0+5}" cy="{y-4}" r="4" fill="{color}"/>',tx(x0+16,y,name,p["text"],12,600),tx(x0+190,y,f"{pct:.1f}%",p["muted"],11,500,"end")]
+            s += [f'<circle cx="{x0+5}" cy="{y-4}" r="4" fill="{color}"/>',tx(x0+16,y,name,p["text"],12,600),tx(x0+(192 if col==0 else 204),y,f"{pct:.1f}%",p["muted"],11,500,"end")]
     s.append("</svg>")
     return "\n".join(s)+"\n"
 
