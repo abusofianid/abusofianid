@@ -95,9 +95,10 @@ def collect():
         if conn is None:
             raise RuntimeError("GitHub returned no contributed-repository connection; check token access and GraphQL permissions.")
         contributed_repos.update(node["nameWithOwner"] for node in (conn.get("nodes") or []))
-        if not conn["pageInfo"]["hasNextPage"]:
+        page_info = conn.get("pageInfo") or {"hasNextPage":False,"endCursor":None}
+        if not page_info["hasNextPage"]:
             break
-        contributed_cursor = conn["pageInfo"]["endCursor"]
+        contributed_cursor = page_info["endCursor"]
         if not contributed_cursor:
             raise RuntimeError("Missing contributed-repository pagination cursor.")
 
