@@ -221,6 +221,7 @@ def main():
     d=collect()
     # Do not write any output until all API queries have succeeded.
     # Store all generated assets beside this script in the dedicated folder.
+    # This also keeps workflow staging paths stable across scheduled and manual runs.
     output_dir = Path(__file__).resolve().parent
     files = {
         "github-stats-dark.svg": stats_svg(d, "dark"),
