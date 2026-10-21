@@ -5,14 +5,12 @@
 <text x="24" y="32" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#1f2328" text-anchor="start">Most Used Languages</text>
 <line x1="24" y1="45" x2="436" y2="45" stroke="#6e7781" stroke-opacity=".65"/>
 <rect x="26" y="70" width="408" height="10" rx="5" fill="#f6f8fa"/>
-<rect x="26.00" y="70" width="231.12" height="10" fill="#3178c6"/>
-<rect x="257.12" y="70" width="64.68" height="10" fill="#f1e05a"/>
-<rect x="321.80" y="70" width="53.13" height="10" fill="#663399"/>
-<rect x="374.93" y="70" width="28.89" height="10" fill="#e34c26"/>
-<rect x="403.82" y="70" width="22.44" height="10" fill="#3572A5"/>
+<rect x="26.00" y="70" width="231.10" height="10" fill="#3178c6"/>
+<rect x="257.10" y="70" width="64.67" height="10" fill="#f1e05a"/>
+<rect x="321.77" y="70" width="53.12" height="10" fill="#663399"/>
+<rect x="374.89" y="70" width="28.89" height="10" fill="#e34c26"/>
+<rect x="403.78" y="70" width="22.49" height="10" fill="#3572A5"/>
 <rect x="426.26" y="70" width="7.60" height="10" fill="#dea584"/>
-<rect x="433.86" y="70" width="0.12" height="10" fill="#384d54"/>
-<rect x="433.98" y="70" width="0.02" height="10" fill="#89e051"/>
 <circle cx="31" cy="102" r="4" fill="#3178c6"/>
 <text x="42" y="106" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start">TypeScript</text>
 <text x="218" y="106" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">56.6%</text>
@@ -31,10 +29,4 @@
 <circle cx="235" cy="136" r="4" fill="#dea584"/>
 <text x="246" y="140" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start">Rust</text>
 <text x="434" y="140" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">1.9%</text>
-<circle cx="235" cy="170" r="4" fill="#384d54"/>
-<text x="246" y="174" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start">Dockerfile</text>
-<text x="434" y="174" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">0.0%</text>
-<circle cx="235" cy="204" r="4" fill="#89e051"/>
-<text x="246" y="208" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start">Shell</text>
-<text x="434" y="208" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">0.0%</text>
 </svg>
