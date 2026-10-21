@@ -5,11 +5,11 @@
 <text x="24" y="32" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#1f2328" text-anchor="start">Most Used Languages</text>
 <line x1="24" y1="45" x2="436" y2="45" stroke="#6e7781" stroke-opacity=".65"/>
 <rect x="26" y="70" width="408" height="10" rx="5" fill="#f6f8fa"/>
-<rect x="26.00" y="70" width="231.50" height="10" fill="#3178c6"/>
-<rect x="257.50" y="70" width="64.78" height="10" fill="#f1e05a"/>
+<rect x="26.00" y="70" width="231.49" height="10" fill="#3178c6"/>
+<rect x="257.49" y="70" width="64.78" height="10" fill="#f1e05a"/>
 <rect x="322.28" y="70" width="53.21" height="10" fill="#663399"/>
-<rect x="375.50" y="70" width="28.94" height="10" fill="#e34c26"/>
-<rect x="404.44" y="70" width="21.81" height="10" fill="#3572A5"/>
+<rect x="375.49" y="70" width="28.94" height="10" fill="#e34c26"/>
+<rect x="404.43" y="70" width="21.82" height="10" fill="#3572A5"/>
 <rect x="426.25" y="70" width="7.61" height="10" fill="#dea584"/>
 <circle cx="31" cy="118" r="4" fill="#3178c6"/>
 <text x="42" y="122" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328" text-anchor="start">TypeScript</text>
