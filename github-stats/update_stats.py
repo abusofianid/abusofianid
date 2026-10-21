@@ -202,7 +202,7 @@ def langs_svg(d,mode):
         s.append(tx(24,80,"No language data available",p["muted"]))
     else:
         # Align the visible top of the chart with the visible top of stats text.
-        x,bar_y,bar_w=26,66,408
+        x,bar_y,bar_w=26,70,408
         s.append(f'<rect x="{x}" y="{bar_y}" width="{bar_w}" height="10" rx="5" fill="{p["panel"]}"/>')
         cursor=x
         for i,(name,pct) in enumerate(langs):
@@ -211,8 +211,8 @@ def langs_svg(d,mode):
             if seg>0:
                 s.append(f'<rect x="{cursor:.2f}" y="{bar_y}" width="{seg:.2f}" height="10" fill="{color}"/>'); cursor+=seg
         for i,(name,pct) in enumerate(langs):
-            # Move language labels slightly lower while keeping the same row rhythm.
-            col=0 if i<3 else 1; row=i if i<3 else i-3; x0=26+col*204; y=120+row*34
+            # Move language labels slightly lower and increase row spacing to reduce the empty space below the final row.
+            col=0 if i<3 else 1; row=i if i<3 else i-3; x0=26+col*204; y=122+row*40
             color=LANGUAGE_COLORS.get(name, p["bars"][i%len(p["bars"])])
             s += [f'<circle cx="{x0+5}" cy="{y-4}" r="4" fill="{color}"/>',tx(x0+16,y,name,p["text"],12,600),tx(x0+(192 if col==0 else 204),y,f"{pct:.1f}%",p["muted"],11,500,"end")]
     s.append("</svg>")
