@@ -38,6 +38,17 @@ query($login:String!,$from:DateTime!,$to:DateTime!) {
 }
 """
 
+CONTRIBUTED_REPOS_QUERY = """
+query($login:String!,$cursor:String) {
+ user(login:$login) {
+  repositoriesContributedTo(first:100,after:$cursor,contributionTypes:[COMMIT,ISSUE,PULL_REQUEST],includeUserRepositories:true) {
+   pageInfo { hasNextPage endCursor }
+   nodes { nameWithOwner }
+  }
+ }
+}
+"""
+
 def graphql(query, variables):
     if not TOKEN:
         raise RuntimeError("GH_STATS_TOKEN secret is missing.")
@@ -76,9 +87,19 @@ def collect():
         totals["commits"] += c["totalCommitContributions"]
         totals["issues"] += c["totalIssueContributions"]
         totals["pulls"] += c["totalPullRequestContributions"]
+    contributed_repos, contributed_cursor = set(), None
+    while True:
+        conn = graphql(CONTRIBUTED_REPOS_QUERY, {"login":LOGIN,"cursor":contributed_cursor})["user"]["repositoriesContributedTo"]
+        contributed_repos.update(node["nameWithOwner"] for node in conn["nodes"])
+        if not conn["pageInfo"]["hasNextPage"]:
+            break
+        contributed_cursor = conn["pageInfo"]["endCursor"]
+        if not contributed_cursor:
+            raise RuntimeError("Missing contributed-repository pagination cursor.")
+
     total_bytes = sum(langs.values())
     top = sorted(langs.items(), key=lambda item:item[1], reverse=True)[:6]
-    return {"stars":stars,"repo_count":len(repos),"years":f"2008–{year_now}",**totals,
+    return {"stars":stars,"repo_count":len(repos),"contributed_to":len(contributed_repos),"years":f"2008–{year_now}",**totals,
         "languages":[(name,size*100/total_bytes if total_bytes else 0) for name,size in top]}
 
 def tx(x,y,value,theme,size=12,weight=500,anchor="start"):
@@ -86,18 +107,24 @@ def tx(x,y,value,theme,size=12,weight=500,anchor="start"):
 
 def stats_svg(d, mode):
     p=THEMES[mode]
-    metrics=[("Stars on owned repositories",d["stars"]),("Contributions · all time",d["contributions"]),("Commit contributions · all time",d["commits"]),("Issue contributions · all time",d["issues"]),("Pull request contributions · all time",d["pulls"])]
-    s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="460" height="230" viewBox="0 0 460 230" role="img" aria-labelledby="title desc">',
-       f'<title id="title">{html.escape(LOGIN)} GitHub statistics</title>',
-       f'<desc id="desc">All-time contribution metrics queried year by year from {d["years"]}; includes accessible private repository contributions.</desc>',
-       f'<rect x="1" y="1" width="458" height="228" rx="12" fill="{p["bg"]}" stroke="{p["border"]}"/>',
-       tx(24,32,f"{LOGIN} · GitHub Stats",p["text"],18,700),tx(436,32,"ALL-TIME",p["muted"],10,700,"end"),
+    metrics=[
+        ("Total Stars Earned",d["stars"]),
+        ("Total Contributions",d["contributions"]),
+        ("Total Commits",d["commits"]),
+        ("Total Issues",d["issues"]),
+        ("Contributed to (all time)",d["contributed_to"]),
+    ]
+    s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="460" height="246" viewBox="0 0 460 246" role="img" aria-labelledby="title desc">',
+       f'<title id="title">Abu Sofian\'s GitHub Stats</title>',
+       f'<desc id="desc">Live all-time GitHub statistics for {html.escape(LOGIN)}, including contributions to accessible private repositories.</desc>',
+       f'<rect x="1" y="1" width="458" height="244" rx="12" fill="{p["bg"]}" stroke="{p["border"]}"/>',
+       tx(24,32,"Abu Sofian's GitHub Stats",p["text"],18,700),
        f'<line x1="24" y1="45" x2="436" y2="45" stroke="{p["border"]}" stroke-opacity=".65"/>']
     for i,(label,val) in enumerate(metrics):
-        y=72+i*31
+        y=78+i*34
         s.extend([tx(26,y,label,p["muted"],12),tx(434,y,f"{val:,}",p["text"],14,700,"end")])
-    s += [tx(24,216,f'Owned repositories scanned: {d["repo_count"]} · Years: {d["years"]}',p["muted"],9),"</svg>"]
-    return "\n".join(s)+"\n"
+    s.append("</svg>")
+    return "\\n".join(s)+"\\n"
 
 def langs_svg(d,mode):
     p=THEMES[mode]; s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="460" height="220" viewBox="0 0 460 220" role="img" aria-labelledby="title desc">',
