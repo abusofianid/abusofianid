@@ -3,13 +3,13 @@
 <desc id="desc">Language bytes aggregated across all owner repositories accessible to the token, including private repositories.</desc>
 <rect x="1" y="1" width="458" height="218" rx="12" fill="#0d1117" stroke="#8b949e"/>
 <text x="24" y="32" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#f0f6fc" text-anchor="start">Most Used Languages</text>
-<text x="436" y="32" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="10" font-weight="700" fill="#c9d1d9" text-anchor="end">ALL REPOS</text>
+<line x1="24" y1="45" x2="436" y2="45" stroke="#8b949e" stroke-opacity=".65"/>
 <rect x="24" y="52" width="412" height="10" rx="5" fill="#161b22"/>
-<rect x="24.00" y="52" width="233.92" height="10" fill="#3178c6"/>
-<rect x="257.92" y="52" width="65.46" height="10" fill="#f1e05a"/>
-<rect x="323.38" y="52" width="53.77" height="10" fill="#663399"/>
+<rect x="24.00" y="52" width="233.91" height="10" fill="#3178c6"/>
+<rect x="257.91" y="52" width="65.46" height="10" fill="#f1e05a"/>
+<rect x="323.37" y="52" width="53.77" height="10" fill="#663399"/>
 <rect x="377.14" y="52" width="29.24" height="10" fill="#e34c26"/>
-<rect x="406.39" y="52" width="21.78" height="10" fill="#3572A5"/>
+<rect x="406.38" y="52" width="21.79" height="10" fill="#3572A5"/>
 <rect x="428.17" y="52" width="7.69" height="10" fill="#dea584"/>
 <circle cx="29" cy="87" r="4" fill="#3178c6"/>
 <text x="40" y="91" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="600" fill="#f0f6fc" text-anchor="start">TypeScript</text>
