@@ -1,69 +1,83 @@
+# Generate the profile's statistics and language cards on a schedule or by manual request.
 name: Update GitHub Stats
 
 on:
+  # Run automatically when the generator or workflow configuration changes on main.
   push:
     branches: [main]
     paths:
       - ".github/workflows/update-stats.yml"
-      - "scripts/update_stats.py"
+      - "github-stats/update_stats.py"
+  # Refresh the cards daily at 00:00 UTC (08:00 WITA).
   schedule:
-    # Daily at 00:00 UTC (08:00 WITA)
     - cron: "0 0 * * *"
+  # Allow maintainers to refresh the cards from the Actions tab.
   workflow_dispatch:
 
+# Permit the workflow's built-in token to commit generated SVG files.
 permissions:
   contents: write
 
+# Avoid overlapping runs that could race while updating the same SVG files.
 concurrency:
   group: github-stats
   cancel-in-progress: false
 
 jobs:
   update-stats:
+    # Use a hosted Linux runner with a fixed timeout for API pagination.
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    # Required when GH_STATS_TOKEN is stored as an Environment secret.
+    # The personal token is stored as an Environment secret in this environment.
     environment: GH_STATS_TOKEN
     steps:
+      # Check out the repository so the generator and SVG assets are available.
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Install the Python version supported by the generator.
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      # Fail early if the configured secret is missing without printing its value.
       - name: Check stats token availability (without exposing the token)
         env:
           GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
         run: |
           if [ -z "$GH_STATS_TOKEN" ]; then
-            echo "::error::GH_STATS_TOKEN is unavailable. Confirm an Environment named GH_STATS_TOKEN exists and contains an Environment secret named GH_STATS_TOKEN."
+            echo "::error::GH_STATS_TOKEN is unavailable. Confirm the GH_STATS_TOKEN environment contains an Environment secret with that name."
             exit 1
           fi
           echo "GH_STATS_TOKEN is available to this workflow."
 
+      # Query GitHub and write only the four theme-specific SVG files in github-stats/.
       - name: Generate all-time stats from GitHub API
         env:
           GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
           GITHUB_USERNAME: abusofianid
-        run: python scripts/update_stats.py
+        run: python github-stats/update_stats.py
 
+      # Validate the expected assets, explicitly reject legacy aliases, and check whitespace.
       - name: Validate generated SVG files
         run: |
           set -euo pipefail
-          for file in github-stats.svg github-top-langs.svg github-stats-dark.svg github-stats-light.svg github-top-langs-dark.svg github-top-langs-light.svg; do
+          for file in github-stats/github-stats-dark.svg github-stats/github-stats-light.svg github-stats/github-top-langs-dark.svg github-stats/github-top-langs-light.svg; do
             test -s "$file"
             grep -q '<svg' "$file"
           done
+          test ! -e github-stats.svg
+          test ! -e github-top-langs.svg
           git diff --check
 
+      # Stage only the four generated theme-specific SVG assets and commit when they changed.
       - name: Commit and push changed cards
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add github-stats.svg github-top-langs.svg github-stats-dark.svg github-stats-light.svg github-top-langs-dark.svg github-top-langs-light.svg
+          git add github-stats/github-stats-dark.svg github-stats/github-stats-light.svg github-stats/github-top-langs-dark.svg github-stats/github-top-langs-light.svg
           if git diff --cached --quiet; then
             echo "Stats have not changed; nothing to commit."
             exit 0
