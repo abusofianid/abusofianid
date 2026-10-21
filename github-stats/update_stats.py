@@ -201,8 +201,8 @@ def langs_svg(d,mode):
     if not langs:
         s.append(tx(24,80,"No language data available",p["muted"]))
     else:
-        # Keep the divider-to-chart spacing aligned with the main stats card.
-        x,bar_y,bar_w=26,78,408
+        # Align the visible top of the chart with the visible top of stats text.
+        x,bar_y,bar_w=26,66,408
         s.append(f'<rect x="{x}" y="{bar_y}" width="{bar_w}" height="10" rx="5" fill="{p["panel"]}"/>')
         cursor=x
         for i,(name,pct) in enumerate(langs):
@@ -211,8 +211,8 @@ def langs_svg(d,mode):
             if seg>0:
                 s.append(f'<rect x="{cursor:.2f}" y="{bar_y}" width="{seg:.2f}" height="10" fill="{color}"/>'); cursor+=seg
         for i,(name,pct) in enumerate(langs):
-            # Use the same 34 px row rhythm as the main stats card.
-            col=0 if i<3 else 1; row=i if i<3 else i-3; x0=26+col*204; y=112+row*34
+            # Move language labels slightly lower while keeping the same row rhythm.
+            col=0 if i<3 else 1; row=i if i<3 else i-3; x0=26+col*204; y=120+row*34
             color=LANGUAGE_COLORS.get(name, p["bars"][i%len(p["bars"])])
             s += [f'<circle cx="{x0+5}" cy="{y-4}" r="4" fill="{color}"/>',tx(x0+16,y,name,p["text"],12,600),tx(x0+(192 if col==0 else 204),y,f"{pct:.1f}%",p["muted"],11,500,"end")]
     s.append("</svg>")
