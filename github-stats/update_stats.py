@@ -242,7 +242,8 @@ def collect():
         if not contributed_cursor:
             raise RuntimeError("Missing contributed-repository pagination cursor.")
 
-    totals["commits"] = count_authored_commits()\n    totals["issues"] = count_authored_items("issue", "Total Issues Opened")
+    totals["commits"] = count_authored_commits()
+    totals["issues"] = count_authored_items("issue", "Total Issues Opened")
     totals["pulls"] = count_authored_items("pr", "Total Pull Requests")
     total_bytes = sum(langs.values())
     top = sorted(langs.items(), key=lambda item:item[1], reverse=True)[:6]
