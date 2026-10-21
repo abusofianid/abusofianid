@@ -96,6 +96,38 @@ def rest_json(url):
         raise RuntimeError(f"GitHub REST API HTTP {exc.code}: {exc.read().decode('utf-8','replace')[:400]}") from exc
 
 
+def count_owned_repo_commits(repos):
+    """Count unique commits authored by LOGIN on each accessible owned repo's default branch.
+
+    This reproduces the earlier 747-style metric. It is intentionally not the same
+    as GitHub's profile contribution count: it scans commit history per owned repo,
+    filters by author login, and deduplicates commit SHAs across repositories.
+    """
+    unique_shas = set()
+    for repo in repos:
+        full_name = repo.get("nameWithOwner")
+        if not full_name:
+            raise RuntimeError("Repository entry is missing nameWithOwner while counting commits.")
+        page = 1
+        while True:
+            query = urllib.parse.urlencode({
+                "author": LOGIN,
+                "per_page": 100,
+                "page": page,
+            })
+            commits = rest_json(f"https://api.github.com/repos/{full_name}/commits?{query}")
+            if not isinstance(commits, list):
+                raise RuntimeError(f"Unexpected commit-list response for {full_name}.")
+            for item in commits:
+                sha = item.get("sha") if isinstance(item, dict) else None
+                if sha:
+                    unique_shas.add(sha)
+            if len(commits) < 100:
+                break
+            page += 1
+    return len(unique_shas)
+
+
 def count_authored_items(search_type, label):
     """Count unique issues or pull requests authored by the account across accessible repositories."""
     unique_ids = set()
@@ -154,9 +186,8 @@ def collect():
     for year in range(2008, year_now + 1):
         c = graphql(CONTRIB_QUERY, {"login":LOGIN,"from":f"{year}-01-01T00:00:00Z","to":f"{year}-12-31T23:59:59Z"})["user"]["contributionsCollection"]
         totals["contributions"] += c["contributionCalendar"]["totalContributions"]
-        totals["commits"] += c["totalCommitContributions"]
-        # Total Commits uses GitHub's profile contribution data for each calendar year.
-        # This keeps the metric aligned with eligible commit contributions, not every branch commit.
+        # Contributions remain calendar-based, but Total Commits is calculated separately
+        # below using the earlier 747-style owned-repository/default-branch logic.
         # Issue and PR totals below remain unique authored items across all statuses.
     contributed_repos, contributed_cursor = set(), None
     while True:
@@ -173,6 +204,7 @@ def collect():
         if not contributed_cursor:
             raise RuntimeError("Missing contributed-repository pagination cursor.")
 
+    totals["commits"] = count_owned_repo_commits(repos)
     totals["issues"] = count_authored_items("issue", "Total Issues Opened")
     totals["pulls"] = count_authored_items("pr", "Total Pull Requests")
     total_bytes = sum(langs.values())
