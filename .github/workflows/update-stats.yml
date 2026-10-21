@@ -31,6 +31,16 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Check stats token availability (without exposing the token)
+        env:
+          GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
+        run: |
+          if [ -z "$GH_STATS_TOKEN" ]; then
+            echo "::error::GH_STATS_TOKEN is not available to this workflow. Check Repository secrets and environment restrictions."
+            exit 1
+          fi
+          echo "GH_STATS_TOKEN is available to this workflow."
+
       - name: Generate all-time stats from GitHub API
         env:
           GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
