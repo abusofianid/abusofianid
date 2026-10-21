@@ -99,8 +99,8 @@ def rest_json(url):
 def count_owned_repo_commits(repos):
     """Count unique commits authored by LOGIN on each accessible owned repo's default branch.
 
-    This reproduces the earlier 747-style metric. It is intentionally not the same
-    as GitHub's profile contribution count: it scans commit history per owned repo,
+    This is intentionally not the same as GitHub's profile contribution count:
+    it scans commit history per owned repo,
     filters by author login, and deduplicates commit SHAs across repositories.
     """
     unique_shas = set()
@@ -186,8 +186,7 @@ def collect():
     for year in range(2008, year_now + 1):
         c = graphql(CONTRIB_QUERY, {"login":LOGIN,"from":f"{year}-01-01T00:00:00Z","to":f"{year}-12-31T23:59:59Z"})["user"]["contributionsCollection"]
         totals["contributions"] += c["contributionCalendar"]["totalContributions"]
-        # Contributions remain calendar-based, but Total Commits is calculated separately
-        # below using the earlier 747-style owned-repository/default-branch logic.
+        # Contributions remain calendar-based; Total Commits is calculated separately.
         # Issue and PR totals below remain unique authored items across all statuses.
     contributed_repos, contributed_cursor = set(), None
     while True:
