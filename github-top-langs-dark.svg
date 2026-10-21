@@ -5,11 +5,11 @@
 <text x="24" y="32" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#f0f6fc" text-anchor="start">Most Used Languages</text>
 <text x="436" y="32" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="10" font-weight="700" fill="#c9d1d9" text-anchor="end">ALL REPOS</text>
 <rect x="24" y="52" width="412" height="10" rx="5" fill="#161b22"/>
-<rect x="24.00" y="52" width="234.12" height="10" fill="#3178c6"/>
-<rect x="258.12" y="52" width="65.52" height="10" fill="#f1e05a"/>
-<rect x="323.64" y="52" width="53.82" height="10" fill="#663399"/>
-<rect x="377.45" y="52" width="29.27" height="10" fill="#e34c26"/>
-<rect x="406.72" y="52" width="21.44" height="10" fill="#3572A5"/>
+<rect x="24.00" y="52" width="234.13" height="10" fill="#3178c6"/>
+<rect x="258.13" y="52" width="65.52" height="10" fill="#f1e05a"/>
+<rect x="323.65" y="52" width="53.82" height="10" fill="#663399"/>
+<rect x="377.47" y="52" width="29.27" height="10" fill="#e34c26"/>
+<rect x="406.74" y="52" width="21.42" height="10" fill="#3572A5"/>
 <rect x="428.16" y="52" width="7.70" height="10" fill="#dea584"/>
 <circle cx="29" cy="87" r="4" fill="#3178c6"/>
 <text x="40" y="91" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="600" fill="#f0f6fc" text-anchor="start">TypeScript</text>
@@ -29,5 +29,4 @@
 <circle cx="239" cy="163" r="4" fill="#dea584"/>
 <text x="250" y="167" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="600" fill="#f0f6fc" text-anchor="start">Rust</text>
 <text x="424" y="167" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="11" font-weight="500" fill="#c9d1d9" text-anchor="end">1.9%</text>
-<text x="24" y="204" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="9" font-weight="500" fill="#c9d1d9" text-anchor="start">Aggregated over 11 owned repositories (private included)</text>
 </svg>
