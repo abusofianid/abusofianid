@@ -131,26 +131,6 @@ def count_authored_items(search_type, label):
     return len(unique_ids)
 
 
-def count_owned_repo_commits(repositories):
-    """Count distinct user-attributed commits on owned repositories' default branches."""
-    commit_shas = set()
-    for repo in repositories:
-        owner_repo = repo["nameWithOwner"]
-        page = 1
-        while True:
-            query = urllib.parse.urlencode({"author": LOGIN, "per_page": 100, "page": page})
-            commits = rest_json(f"https://api.github.com/repos/{owner_repo}/commits?{query}")
-            if not isinstance(commits, list):
-                raise RuntimeError(f"Unexpected commit-list response for {owner_repo}.")
-            for commit in commits:
-                sha = commit.get("sha")
-                if sha:
-                    commit_shas.add(sha)
-            if len(commits) < 100:
-                break
-            page += 1
-    return len(commit_shas)
-
 def collect():
     """Collect all-time statistics and language usage from GitHub APIs."""
     repos, cursor = [], None
@@ -191,13 +171,11 @@ def collect():
         if not contributed_cursor:
             raise RuntimeError("Missing contributed-repository pagination cursor.")
 
-    owned_repo_commits = count_owned_repo_commits(repos)
     totals["issues"] = count_authored_items("issue", "Total Issues Opened")
     totals["pulls"] = count_authored_items("pr", "Total Pull Requests")
     total_bytes = sum(langs.values())
     top = sorted(langs.items(), key=lambda item:item[1], reverse=True)[:6]
     return {"stars":stars,"repo_count":len(repos),"contributed_to":len(contributed_repos),"years":f"2008–{year_now}",**totals,
-        "commits":owned_repo_commits,
         "languages":[(name,size*100/total_bytes if total_bytes else 0) for name,size in top]}
 
 def tx(x,y,value,theme,size=12,weight=500,anchor="start"):
