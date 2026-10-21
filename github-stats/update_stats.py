@@ -201,7 +201,8 @@ def langs_svg(d,mode):
     if not langs:
         s.append(tx(24,80,"No language data available",p["muted"]))
     else:
-        x,bar_y,bar_w=24,52,412
+        # Match the 33 px divider-to-content spacing used by the main stats card.
+        x,bar_y,bar_w=24,78,412
         s.append(f'<rect x="{x}" y="{bar_y}" width="{bar_w}" height="10" rx="5" fill="{p["panel"]}"/>')
         cursor=x
         for i,(name,pct) in enumerate(langs):
@@ -210,7 +211,8 @@ def langs_svg(d,mode):
             if seg>0:
                 s.append(f'<rect x="{cursor:.2f}" y="{bar_y}" width="{seg:.2f}" height="10" fill="{color}"/>'); cursor+=seg
         for i,(name,pct) in enumerate(langs):
-            col=0 if i<3 else 1; row=i if i<3 else i-3; x0=24+col*210; y=91+row*38
+            # Move language labels down with the bar while preserving even row spacing.
+            col=0 if i<3 else 1; row=i if i<3 else i-3; x0=24+col*210; y=117+row*38
             color=LANGUAGE_COLORS.get(name, p["bars"][i%len(p["bars"])])
             s += [f'<circle cx="{x0+5}" cy="{y-4}" r="4" fill="{color}"/>',tx(x0+16,y,name,p["text"],12,600),tx(x0+190,y,f"{pct:.1f}%",p["muted"],11,500,"end")]
     s.append("</svg>")
