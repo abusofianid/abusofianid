@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+"""Generate all-time GitHub stats SVGs using the GraphQL API."""
+import html
+import json
+import os
+import sys
+import urllib.error
+import urllib.request
+from collections import defaultdict
+from datetime import datetime, timezone
+from pathlib import Path
+
+TOKEN = os.environ.get("GH_STATS_TOKEN")
+LOGIN = os.environ.get("GITHUB_USERNAME", "abusofianid")
+API = "https://api.github.com/graphql"
+THEMES = {
+    "dark": {"bg": "#0d1117", "text": "#f0f6fc", "muted": "#c9d1d9", "border": "#8b949e", "panel": "#161b22", "bars": ["#f0f6fc", "#c9d1d9", "#8b949e", "#6e7681", "#484f58", "#30363d"]},
+    "light": {"bg": "#ffffff", "text": "#1f2328", "muted": "#424a53", "border": "#6e7781", "panel": "#f6f8fa", "bars": ["#24292f", "#424a53", "#57606a", "#6e7781", "#8c959f", "#afb8c1"]},
+}
+REPOS_QUERY = """
+query($login:String!,$cursor:String) {
+ user(login:$login) {
+  repositories(first:100,after:$cursor,ownerAffiliations:OWNER,orderBy:{field:NAME,direction:ASC}) {
+   pageInfo { hasNextPage endCursor }
+   nodes { stargazerCount languages(first:20,orderBy:{field:SIZE,direction:DESC}) { edges { size node { name } } } }
+  }
+ }
+}
+"""
+CONTRIB_QUERY = """
+query($login:String!,$from:DateTime!,$to:DateTime!) {
+ user(login:$login) {
+  contributionsCollection(from:$from,to:$to) {
+   totalCommitContributions totalIssueContributions totalPullRequestContributions
+   contributionCalendar { totalContributions }
+  }
+ }
+}
+"""
+
+def graphql(query, variables):
+    if not TOKEN:
+        raise RuntimeError("GH_STATS_TOKEN secret is missing.")
+    req = urllib.request.Request(API, data=json.dumps({"query":query,"variables":variables}).encode(), headers={
+        "Authorization":f"Bearer {TOKEN}","Content-Type":"application/json","Accept":"application/vnd.github+json","User-Agent":"profile-stats-generator"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as response:
+            body = json.load(response)
+    except urllib.error.HTTPError as exc:
+        raise RuntimeError(f"GitHub API HTTP {exc.code}: {exc.read().decode('utf-8','replace')[:400]}") from exc
+    if body.get("errors"):
+        raise RuntimeError("GitHub GraphQL error: " + "; ".join(e.get("message","unknown") for e in body["errors"]))
+    return body["data"]
+
+def collect():
+    repos, cursor = [], None
+    while True:
+        conn = graphql(REPOS_QUERY, {"login":LOGIN,"cursor":cursor})["user"]["repositories"]
+        repos.extend(conn["nodes"])
+        if not conn["pageInfo"]["hasNextPage"]:
+            break
+        cursor = conn["pageInfo"]["endCursor"]
+        if not cursor:
+            raise RuntimeError("Missing repository pagination cursor.")
+    langs, stars = defaultdict(int), 0
+    for repo in repos:
+        stars += repo["stargazerCount"]
+        for edge in repo["languages"]["edges"]:
+            langs[edge["node"]["name"]] += edge["size"]
+    totals = {"contributions":0,"commits":0,"issues":0,"pulls":0}
+    year_now = datetime.now(timezone.utc).year
+    # Query every calendar year separately, rather than a rolling 365-day window.
+    for year in range(2008, year_now + 1):
+        c = graphql(CONTRIB_QUERY, {"login":LOGIN,"from":f"{year}-01-01T00:00:00Z","to":f"{year}-12-31T23:59:59Z"})["user"]["contributionsCollection"]
+        totals["contributions"] += c["contributionCalendar"]["totalContributions"]
+        totals["commits"] += c["totalCommitContributions"]
+        totals["issues"] += c["totalIssueContributions"]
+        totals["pulls"] += c["totalPullRequestContributions"]
+    total_bytes = sum(langs.values())
+    top = sorted(langs.items(), key=lambda item:item[1], reverse=True)[:6]
+    return {"stars":stars,"repo_count":len(repos),"years":f"2008–{year_now}",**totals,
+        "languages":[(name,size*100/total_bytes if total_bytes else 0) for name,size in top]}
+
+def tx(x,y,value,theme,size=12,weight=500,anchor="start"):
+    return f'<text x="{x}" y="{y}" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="{size}" font-weight="{weight}" fill="{theme}" text-anchor="{anchor}">{html.escape(str(value))}</text>'
+
+def stats_svg(d, mode):
+    p=THEMES[mode]
+    metrics=[("Stars on owned repositories",d["stars"]),("Contributions · all time",d["contributions"]),("Commit contributions · all time",d["commits"]),("Issue contributions · all time",d["issues"]),("Pull request contributions · all time",d["pulls"])]
+    s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="460" height="230" viewBox="0 0 460 230" role="img" aria-labelledby="title desc">',
+       f'<title id="title">{html.escape(LOGIN)} GitHub statistics</title>',
+       f'<desc id="desc">All-time contribution metrics queried year by year from {d["years"]}; includes accessible private repository contributions.</desc>',
+       f'<rect x="1" y="1" width="458" height="228" rx="12" fill="{p["bg"]}" stroke="{p["border"]}"/>',
+       tx(24,32,f"{LOGIN} · GitHub Stats",p["text"],18,700),tx(436,32,"ALL-TIME",p["muted"],10,700,"end"),
+       f'<line x1="24" y1="45" x2="436" y2="45" stroke="{p["border"]}" stroke-opacity=".65"/>']
+    for i,(label,val) in enumerate(metrics):
+        y=72+i*31
+        s.extend([tx(26,y,label,p["muted"],12),tx(434,y,f"{val:,}",p["text"],14,700,"end")])
+    s += [tx(24,216,f'Owned repositories scanned: {d["repo_count"]} · Years: {d["years"]}',p["muted"],9),"</svg>"]
+    return "\n".join(s)+"\n"
+
+def langs_svg(d,mode):
+    p=THEMES[mode]; s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="460" height="220" viewBox="0 0 460 220" role="img" aria-labelledby="title desc">',
+        f'<title id="title">Most Used Languages · {html.escape(LOGIN)}</title>',
+        '<desc id="desc">Language bytes aggregated across all owner repositories accessible to the token, including private repositories.</desc>',
+        f'<rect x="1" y="1" width="458" height="218" rx="12" fill="{p["bg"]}" stroke="{p["border"]}"/>',
+        tx(24,32,"Most Used Languages",p["text"],18,700),tx(436,32,"ALL REPOS",p["muted"],10,700,"end")]
+    langs=d["languages"]
+    if not langs:
+        s.append(tx(24,80,"No language data available",p["muted"]))
+    else:
+        x,bar_y,bar_w=24,52,412
+        s.append(f'<rect x="{x}" y="{bar_y}" width="{bar_w}" height="10" rx="5" fill="{p["panel"]}"/>')
+        cursor=x
+        for i,(_,pct) in enumerate(langs):
+            seg=bar_w*pct/100
+            if seg>0:
+                s.append(f'<rect x="{cursor:.2f}" y="{bar_y}" width="{seg:.2f}" height="10" fill="{p["bars"][i%len(p["bars"])]}"/>'); cursor+=seg
+        for i,(name,pct) in enumerate(langs):
+            col=0 if i<3 else 1; row=i if i<3 else i-3; x0=24+col*210; y=91+row*38
+            s += [f'<circle cx="{x0+5}" cy="{y-4}" r="4" fill="{p["bars"][i%len(p["bars"])]}"/>',tx(x0+16,y,name,p["text"],12,600),tx(x0+190,y,f"{pct:.1f}%",p["muted"],11,500,"end")]
+    s += [tx(24,204,f'Aggregated over {d["repo_count"]} owned repositories (private included)',p["muted"],9),"</svg>"]
+    return "\n".join(s)+"\n"
+
+def main():
+    d=collect()
+    # Do not write any output until all API queries have succeeded.
+    files={"github-stats-dark.svg":stats_svg(d,"dark"),"github-stats-light.svg":stats_svg(d,"light"),
+           "github-top-langs-dark.svg":langs_svg(d,"dark"),"github-top-langs-light.svg":langs_svg(d,"light"),
+           "github-stats.svg":stats_svg(d,"dark"),"github-top-langs.svg":langs_svg(d,"dark")}
+    for name,content in files.items():
+        Path(name).write_text(content,encoding="utf-8")
+    print(f'Generated {len(files)} SVG cards; scanned {d["repo_count"]} owner repositories; history {d["years"]}.')
+
+if __name__=="__main__":
+    try: main()
+    except Exception as exc:
+        print(f"ERROR: {exc}",file=sys.stderr); sys.exit(1)
