@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="246" viewBox="0 0 460 246" role="img" aria-labelledby="title desc">
+<title id="title">Abu Sofian's GitHub Stats</title>
+<desc id="desc">Live all-time GitHub statistics for abusofianid, including contributions to accessible private repositories.</desc>
+<rect x="1" y="1" width="458" height="244" rx="12" fill="#0d1117" stroke="#8b949e"/>
+<text x="24" y="32" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#f0f6fc" text-anchor="start">Abu Sofian&#x27;s GitHub Stats</text>
+<line x1="24" y1="45" x2="436" y2="45" stroke="#8b949e" stroke-opacity=".65"/>
+<text x="26" y="78" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#c9d1d9" text-anchor="start">Total Stars Earned</text>
+<text x="434" y="78" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="end">13</text>
+<text x="26" y="112" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#c9d1d9" text-anchor="start">Total Contributions</text>
+<text x="434" y="112" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="end">780</text>
+<text x="26" y="146" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#c9d1d9" text-anchor="start">Total Commits</text>
+<text x="434" y="146" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="end">720</text>
+<text x="26" y="180" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#c9d1d9" text-anchor="start">Total Issues</text>
+<text x="434" y="180" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="end">7</text>
+<text x="26" y="214" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#c9d1d9" text-anchor="start">Repositories Contributed To</text>
+<text x="434" y="214" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#f0f6fc" text-anchor="end">16</text>
+</svg>
