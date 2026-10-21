@@ -8,8 +8,8 @@
 <rect x="24.00" y="52" width="234.13" height="10" fill="#3178c6"/>
 <rect x="258.13" y="52" width="65.52" height="10" fill="#f1e05a"/>
 <rect x="323.65" y="52" width="53.82" height="10" fill="#663399"/>
-<rect x="377.47" y="52" width="29.27" height="10" fill="#e34c26"/>
-<rect x="406.74" y="52" width="21.42" height="10" fill="#3572A5"/>
+<rect x="377.46" y="52" width="29.27" height="10" fill="#e34c26"/>
+<rect x="406.73" y="52" width="21.43" height="10" fill="#3572A5"/>
 <rect x="428.16" y="52" width="7.70" height="10" fill="#dea584"/>
 <circle cx="29" cy="87" r="4" fill="#3178c6"/>
 <text x="40" y="91" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328" text-anchor="start">TypeScript</text>
