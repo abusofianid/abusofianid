@@ -1,0 +1,54 @@
+{
+  "title": "GitHub Stats and Most Used Languages",
+  "version": "1.0.0",
+  "language": "en",
+  "purpose": "Explain how the GitHub statistics and language-usage cards are generated and displayed.",
+  "files": {
+    "update_stats.py": "Python generator that reads GitHub GraphQL and REST APIs and writes four theme-specific SVG cards into this folder.",
+    "github-stats-dark.svg": "Main GitHub statistics card for dark theme.",
+    "github-stats-light.svg": "Main GitHub statistics card for light theme.",
+    "github-top-langs-dark.svg": "Most Used Languages card for dark theme; language-specific colors are retained.",
+    "github-top-langs-light.svg": "Most Used Languages card for light theme; language-specific colors are retained.",
+    "guide.json": "This JSON documentation file."
+  },
+  "generation": {
+    "automatic": "GitHub Actions runs daily at 00:00 UTC (08:00 WITA).",
+    "manual": "Open the repository Actions tab, select Update GitHub Stats, and choose Run workflow.",
+    "requirements": [
+      "The GitHub Environment named GH_STATS_TOKEN must contain an Environment secret named GH_STATS_TOKEN.",
+      "The token must be able to read the repositories and contribution data intended for inclusion.",
+      "The workflow uses the built-in GITHUB_TOKEN with contents: write to commit updated SVG files."
+    ],
+    "command": "python github-stats/update_stats.py",
+    "outputs": [
+      "github-stats/github-stats-dark.svg",
+      "github-stats/github-stats-light.svg",
+      "github-stats/github-top-langs-dark.svg",
+      "github-stats/github-top-langs-light.svg"
+    ],
+    "legacyOutputsDisabled": [
+      "github-stats.svg",
+      "github-top-langs.svg"
+    ]
+  },
+  "usage": {
+    "readme": "Use an HTML picture element with dark and light source paths so GitHub can choose the matching theme.",
+    "darkThemePath": "./github-stats/github-stats-dark.svg",
+    "lightThemePath": "./github-stats/github-stats-light.svg",
+    "languagesDarkThemePath": "./github-stats/github-top-langs-dark.svg",
+    "languagesLightThemePath": "./github-stats/github-top-langs-light.svg"
+  },
+  "metrics": {
+    "stars": "Sum of stars on accessible repositories owned by the account.",
+    "contributions": "GitHub contribution-calendar totals summed by calendar year starting in 2008.",
+    "commits": "Distinct commits attributed to the account on owned repositories' default branches.",
+    "issues": "GitHub-recognized issue contributions summed by calendar year.",
+    "repositoriesContributedTo": "Repositories returned by GitHub's repositoriesContributedTo connection.",
+    "languages": "Top six languages aggregated by GitHub-reported language bytes across accessible owned repositories."
+  },
+  "notes": [
+    "Only four theme-specific SVG files are generated; legacy theme-unspecified SVG files are not generated.",
+    "GitHub Actions workflow definitions must stay in .github/workflows for GitHub to discover them.",
+    "This generator does not deploy to Vercel."
+  ]
+}
