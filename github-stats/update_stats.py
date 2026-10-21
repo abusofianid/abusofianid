@@ -207,7 +207,7 @@ def collect():
     totals["issues"] = count_authored_items("issue", "Total Issues Opened")
     totals["pulls"] = count_authored_items("pr", "Total Pull Requests")
     total_bytes = sum(langs.values())
-    top = sorted(langs.items(), key=lambda item:item[1], reverse=True)[:6]
+    top = sorted(langs.items(), key=lambda item:item[1], reverse=True)[:8]
     return {"stars":stars,"repo_count":len(repos),"contributed_to":len(contributed_repos),"years":f"2008–{year_now}",**totals,
         "languages":[(name,size*100/total_bytes if total_bytes else 0) for name,size in top]}
 
@@ -234,7 +234,8 @@ def stats_svg(d, mode):
        f'<line x1="24" y1="45" x2="436" y2="45" stroke="{p["border"]}" stroke-opacity=".65"/>']
     for i,(label,val) in enumerate(metrics):
         y=72+i*29
-        s.extend([tx(26,y,label,p["muted"],12),tx(434,y,f"{val:,}",p["text"],14,700,"end")])
+        s.extend([tx(26,y,label,p["text"],14,700),tx(390,y,f"{val:,}",p["text"],14,700,"end"),
+            f'<svg x="405" y="{y-12}" width="16" height="16" viewBox="0 0 24 24" aria-label="GitHub"><path fill="{p["text"]}" d="M12 .297a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.05c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.74.08-.74 1.2.08 1.83 1.23 1.83 1.23 1.07 1.84 2.8 1.31 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .297"/></svg>'])
     s.append("</svg>")
     return "\n".join(s)+"\n"
 
@@ -261,9 +262,9 @@ def langs_svg(d,mode):
                 s.append(f'<rect x="{cursor:.2f}" y="{bar_y}" width="{seg:.2f}" height="10" fill="{color}"/>'); cursor+=seg
         for i,(name,pct) in enumerate(langs):
             # Move language labels slightly lower and increase row spacing to reduce the empty space below the final row.
-            col=0 if i<3 else 1; row=i if i<3 else i-3; x0=26+col*204; y=122+row*40
+            col=0 if i<4 else 1; row=i if i<4 else i-4; x0=26+col*204; y=106+row*34
             color=LANGUAGE_COLORS.get(name, p["bars"][i%len(p["bars"])])
-            s += [f'<circle cx="{x0+5}" cy="{y-4}" r="4" fill="{color}"/>',tx(x0+16,y,name,p["muted"],12,500),tx(x0+(192 if col==0 else 204),y,f"{pct:.1f}%",p["text"],14,700,"end")]
+            s += [f'<circle cx="{x0+5}" cy="{y-4}" r="4" fill="{color}"/>',tx(x0+16,y,name,p["text"],14,700),tx(x0+(192 if col==0 else 204),y,f"{pct:.1f}%",p["text"],14,700,"end")]
     s.append("</svg>")
     return "\n".join(s)+"\n"
 
