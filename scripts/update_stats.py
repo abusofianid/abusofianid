@@ -163,7 +163,7 @@ def langs_svg(d,mode):
             col=0 if i<3 else 1; row=i if i<3 else i-3; x0=24+col*210; y=91+row*38
             color=LANGUAGE_COLORS.get(name, p["bars"][i%len(p["bars"])])
             s += [f'<circle cx="{x0+5}" cy="{y-4}" r="4" fill="{color}"/>',tx(x0+16,y,name,p["text"],12,600),tx(x0+190,y,f"{pct:.1f}%",p["muted"],11,500,"end")]
-    s += [tx(24,204,f'Aggregated over {d["repo_count"]} owned repositories (private included)',p["muted"],9),"</svg>"]
+    s.append("</svg>")
     return "\n".join(s)+"\n"
 
 def main():
