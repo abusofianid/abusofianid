@@ -124,7 +124,7 @@ def stats_svg(d, mode):
         y=78+i*34
         s.extend([tx(26,y,label,p["muted"],12),tx(434,y,f"{val:,}",p["text"],14,700,"end")])
     s.append("</svg>")
-    return "\\n".join(s)+"\\n"
+    return "\n".join(s)+"\n"
 
 def langs_svg(d,mode):
     p=THEMES[mode]; s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="460" height="220" viewBox="0 0 460 220" role="img" aria-labelledby="title desc">',
