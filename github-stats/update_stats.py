@@ -224,9 +224,10 @@ def collect():
     for year in range(2008, year_now + 1):
         c = graphql(CONTRIB_QUERY, {"login":LOGIN,"from":f"{year}-01-01T00:00:00Z","to":f"{year}-12-31T23:59:59Z"})["user"]["contributionsCollection"]
         totals["contributions"] += c["contributionCalendar"]["totalContributions"]
-        # GitHub contribution commit counts are retained as profile-contribution data only;\n        # Total Commits is computed from accessible repository branches below.
-        # Contribution-calendar categories remain useful API data, but the displayed
-        # issue and PR totals below count unique authored items across all statuses.
+        totals["commits"] += c["totalCommitContributions"]
+        # Total Commits uses GitHub's profile contribution data for each calendar year.
+        # This keeps the metric aligned with eligible commit contributions, not every branch commit.
+        # Issue and PR totals below remain unique authored items across all statuses.
     contributed_repos, contributed_cursor = set(), None
     while True:
         response = graphql(CONTRIBUTED_REPOS_QUERY, {"login":LOGIN,"cursor":contributed_cursor})
@@ -242,7 +243,6 @@ def collect():
         if not contributed_cursor:
             raise RuntimeError("Missing contributed-repository pagination cursor.")
 
-    totals["commits"] = count_authored_commits()
     totals["issues"] = count_authored_items("issue", "Total Issues Opened")
     totals["pulls"] = count_authored_items("pr", "Total Pull Requests")
     total_bytes = sum(langs.values())
