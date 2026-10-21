@@ -21,7 +21,9 @@ concurrency:
 jobs:
   update-stats:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
+    # Required when GH_STATS_TOKEN is stored as an Environment secret.
+    environment: GH_STATS_TOKEN
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -36,7 +38,7 @@ jobs:
           GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
         run: |
           if [ -z "$GH_STATS_TOKEN" ]; then
-            echo "::error::GH_STATS_TOKEN is not available to this workflow. Check Repository secrets and environment restrictions."
+            echo "::error::GH_STATS_TOKEN is unavailable. Confirm an Environment named GH_STATS_TOKEN exists and contains an Environment secret named GH_STATS_TOKEN."
             exit 1
           fi
           echo "GH_STATS_TOKEN is available to this workflow."
