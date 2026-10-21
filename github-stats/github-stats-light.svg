@@ -5,9 +5,9 @@
 <text x="24" y="32" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#1f2328" text-anchor="start">Abu Sofian&#x27;s GitHub Stats</text>
 <line x1="24" y1="45" x2="436" y2="45" stroke="#6e7781" stroke-opacity=".65"/>
 <text x="26" y="72" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Contributions</text>
-<text x="434" y="72" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">797</text>
+<text x="434" y="72" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">800</text>
 <text x="26" y="101" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Commits</text>
-<text x="434" y="101" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">753</text>
+<text x="434" y="101" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">760</text>
 <text x="26" y="130" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Issues Opened</text>
 <text x="434" y="130" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">7</text>
 <text x="26" y="159" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Pull Requests</text>
