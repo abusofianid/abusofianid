@@ -41,7 +41,7 @@ query($login:String!,$from:DateTime!,$to:DateTime!) {
 CONTRIBUTED_REPOS_QUERY = """
 query($login:String!,$cursor:String) {
  user(login:$login) {
-  repositoriesContributedTo(first:100,after:$cursor,contributionTypes:[COMMIT,ISSUE,PULL_REQUEST],includeUserRepositories:true) {
+  repositoriesContributedTo(first:100,after:$cursor,contributionTypes:[COMMIT,ISSUE,PULL_REQUEST]) {
    pageInfo { hasNextPage endCursor }
    nodes { nameWithOwner }
   }
@@ -89,8 +89,12 @@ def collect():
         totals["pulls"] += c["totalPullRequestContributions"]
     contributed_repos, contributed_cursor = set(), None
     while True:
-        conn = graphql(CONTRIBUTED_REPOS_QUERY, {"login":LOGIN,"cursor":contributed_cursor})["user"]["repositoriesContributedTo"]
-        contributed_repos.update(node["nameWithOwner"] for node in conn["nodes"])
+        response = graphql(CONTRIBUTED_REPOS_QUERY, {"login":LOGIN,"cursor":contributed_cursor})
+        user_data = response.get("user") or {}
+        conn = user_data.get("repositoriesContributedTo")
+        if conn is None:
+            raise RuntimeError("GitHub returned no contributed-repository connection; check token access and GraphQL permissions.")
+        contributed_repos.update(node["nameWithOwner"] for node in (conn.get("nodes") or []))
         if not conn["pageInfo"]["hasNextPage"]:
             break
         contributed_cursor = conn["pageInfo"]["endCursor"]
