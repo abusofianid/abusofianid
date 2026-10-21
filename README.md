@@ -33,15 +33,15 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 ### GitHub Stats · All Time
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./github-stats-dark.svg?v=20261021" />
-  <source media="(prefers-color-scheme: light)" srcset="./github-stats-light.svg?v=20261021" />
-  <img src="./github-stats-dark.svg?v=20261021" alt="GitHub all-time statistics" />
+  <source media="(prefers-color-scheme: dark)" srcset="./github-stats/github-stats-dark.svg?v=20261021" />
+  <source media="(prefers-color-scheme: light)" srcset="./github-stats/github-stats-light.svg?v=20261021" />
+  <img src="./github-stats/github-stats-dark.svg?v=20261021" alt="GitHub all-time statistics" />
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./github-top-langs-dark.svg?v=20261021" />
-  <source media="(prefers-color-scheme: light)" srcset="./github-top-langs-light.svg?v=20261021" />
-  <img src="./github-top-langs-dark.svg?v=20261021" alt="Most used programming languages across owner repositories" />
+  <source media="(prefers-color-scheme: dark)" srcset="./github-stats/github-top-langs-dark.svg?v=20261021" />
+  <source media="(prefers-color-scheme: light)" srcset="./github-stats/github-top-langs-light.svg?v=20261021" />
+  <img src="./github-stats/github-top-langs-dark.svg?v=20261021" alt="Most used programming languages across owner repositories" />
 </picture>
 
 </div>
