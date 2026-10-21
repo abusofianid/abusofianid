@@ -7,7 +7,7 @@
 <text x="26" y="72" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Contributions</text>
 <text x="434" y="72" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">795</text>
 <text x="26" y="101" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Commits</text>
-<text x="434" y="101" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">747</text>
+<text x="434" y="101" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">168</text>
 <text x="26" y="130" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Issues Opened</text>
 <text x="434" y="130" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">7</text>
 <text x="26" y="159" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#424a53" text-anchor="start">Total Pull Requests</text>
