@@ -95,9 +95,44 @@ def rest_json(url):
     except urllib.error.HTTPError as exc:
         raise RuntimeError(f"GitHub REST API HTTP {exc.code}: {exc.read().decode('utf-8','replace')[:400]}") from exc
 
+def count_authored_items(search_type, label):
+    """Count unique issues or pull requests authored by the account across accessible repositories."""
+    unique_ids = set()
+    page = 1
+    expected_total = None
+    while True:
+        query = urllib.parse.urlencode({
+            "q": f"author:{LOGIN} is:{search_type}",
+            "per_page": 100,
+            "page": page,
+        })
+        result = rest_json(f"https://api.github.com/search/issues?{query}")
+        if not isinstance(result, dict) or not isinstance(result.get("items"), list):
+            raise RuntimeError(f"Unexpected GitHub search response while counting {label}.")
+        if result.get("incomplete_results"):
+            raise RuntimeError(f"GitHub returned incomplete search results while counting {label}; refusing to publish a partial total.")
+        if expected_total is None:
+            expected_total = result.get("total_count")
+            if not isinstance(expected_total, int):
+                raise RuntimeError(f"GitHub did not provide a valid total while counting {label}.")
+            # GitHub Search API returns at most 1,000 results; never publish a silently truncated count.
+            if expected_total > 1000:
+                raise RuntimeError(f"{label} count ({expected_total}) exceeds GitHub Search API's 1,000-result limit; use a date-partitioned query before publishing.")
+        items = result["items"]
+        for item in items:
+            item_id = item.get("id")
+            if item_id is not None:
+                unique_ids.add(item_id)
+        if not items or len(unique_ids) >= expected_total or len(items) < 100:
+            break
+        page += 1
+    if len(unique_ids) != expected_total:
+        raise RuntimeError(f"Incomplete {label} count: GitHub reported {expected_total}, but only {len(unique_ids)} unique items were retrieved.")
+    return len(unique_ids)
+
+
 def count_owned_repo_commits(repositories):
     """Count distinct user-attributed commits on owned repositories' default branches."""
-    """Count distinct commits authored by this GitHub user on owned repos' default branches."""
     commit_shas = set()
     for repo in repositories:
         owner_repo = repo["nameWithOwner"]
@@ -139,8 +174,8 @@ def collect():
         c = graphql(CONTRIB_QUERY, {"login":LOGIN,"from":f"{year}-01-01T00:00:00Z","to":f"{year}-12-31T23:59:59Z"})["user"]["contributionsCollection"]
         totals["contributions"] += c["contributionCalendar"]["totalContributions"]
         totals["commits"] += c["totalCommitContributions"]
-        totals["issues"] += c["totalIssueContributions"]
-        totals["pulls"] += c["totalPullRequestContributions"]
+        # Contribution-calendar categories remain useful API data, but the displayed
+        # issue and PR totals below count unique authored items across all statuses.
     contributed_repos, contributed_cursor = set(), None
     while True:
         response = graphql(CONTRIBUTED_REPOS_QUERY, {"login":LOGIN,"cursor":contributed_cursor})
@@ -157,6 +192,8 @@ def collect():
             raise RuntimeError("Missing contributed-repository pagination cursor.")
 
     owned_repo_commits = count_owned_repo_commits(repos)
+    totals["issues"] = count_authored_items("issue", "Total Issues Opened")
+    totals["pulls"] = count_authored_items("pr", "Total Pull Requests")
     total_bytes = sum(langs.values())
     top = sorted(langs.items(), key=lambda item:item[1], reverse=True)[:6]
     return {"stars":stars,"repo_count":len(repos),"contributed_to":len(contributed_repos),"years":f"2008–{year_now}",**totals,
@@ -171,10 +208,11 @@ def stats_svg(d, mode):
     """Render the main statistics card for the selected theme."""
     p=THEMES[mode]
     metrics=[
-        ("Total Stars Earned",d["stars"]),
         ("Total Contributions",d["contributions"]),
         ("Total Commits",d["commits"]),
-        ("Total Issues",d["issues"]),
+        ("Total Issues Opened",d["issues"]),
+        ("Total Pull Requests",d["pulls"]),
+        ("Total Stars Earned",d["stars"]),
         ("Repositories Contributed To",d["contributed_to"]),
     ]
     s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="460" height="246" viewBox="0 0 460 246" role="img" aria-labelledby="title desc">',
@@ -184,7 +222,7 @@ def stats_svg(d, mode):
        tx(24,32,"Abu Sofian's GitHub Stats",p["text"],18,700),
        f'<line x1="24" y1="45" x2="436" y2="45" stroke="{p["border"]}" stroke-opacity=".65"/>']
     for i,(label,val) in enumerate(metrics):
-        y=78+i*34
+        y=72+i*29
         s.extend([tx(26,y,label,p["muted"],12),tx(434,y,f"{val:,}",p["text"],14,700,"end")])
     s.append("</svg>")
     return "\n".join(s)+"\n"
