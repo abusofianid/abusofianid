@@ -51,7 +51,7 @@ query($login:String!,$from:DateTime!,$to:DateTime!) {
 CONTRIBUTED_REPOS_QUERY = """
 query($login:String!,$cursor:String) {
  user(login:$login) {
-  repositoriesContributedTo(first:100,after:$cursor,contributionTypes:[COMMIT,ISSUE,PULL_REQUEST]) {
+  repositoriesContributedTo(first:100,after:$cursor,includeUserRepositories:true,contributionTypes:[COMMIT,ISSUE,PULL_REQUEST,REPOSITORY]) {
    pageInfo { hasNextPage endCursor }
    nodes { nameWithOwner }
   }
@@ -127,7 +127,7 @@ def stats_svg(d, mode):
         ("Total Contributions",d["contributions"]),
         ("Total Commits",d["commits"]),
         ("Total Issues",d["issues"]),
-        ("Contributed to (all time)",d["contributed_to"]),
+        ("Repositories Contributed To",d["contributed_to"]),
     ]
     s=[f'<svg xmlns="http://www.w3.org/2000/svg" width="460" height="246" viewBox="0 0 460 246" role="img" aria-labelledby="title desc">',
        f'<title id="title">Abu Sofian\'s GitHub Stats</title>',
