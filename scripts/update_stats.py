@@ -185,7 +185,8 @@ def langs_svg(d,mode):
         f'<title id="title">Most Used Languages · {html.escape(LOGIN)}</title>',
         '<desc id="desc">Language bytes aggregated across all owner repositories accessible to the token, including private repositories.</desc>',
         f'<rect x="1" y="1" width="458" height="218" rx="12" fill="{p["bg"]}" stroke="{p["border"]}"/>',
-        tx(24,32,"Most Used Languages",p["text"],18,700),tx(436,32,"ALL REPOS",p["muted"],10,700,"end")]
+        tx(24,32,"Most Used Languages",p["text"],18,700),
+        f'<line x1="24" y1="45" x2="436" y2="45" stroke="{p["border"]}" stroke-opacity=".65"/>']
     langs=d["languages"]
     if not langs:
         s.append(tx(24,80,"No language data available",p["muted"]))
