@@ -207,9 +207,12 @@ def collect():
     totals["issues"] = count_authored_items("issue", "Total Issues Opened")
     totals["pulls"] = count_authored_items("pr", "Total Pull Requests")
     total_bytes = sum(langs.values())
-    top = sorted(langs.items(), key=lambda item:item[1], reverse=True)[:8]
+    # Exclude entries that would display as 0.0%, then keep at most eight languages.
+    percentages = [(name, size*100/total_bytes) for name,size in langs.items()] if total_bytes else []
+    visible_languages = [(name,pct) for name,pct in percentages if round(pct,1) > 0]
+    top = sorted(visible_languages, key=lambda item:item[1], reverse=True)[:8]
     return {"stars":stars,"repo_count":len(repos),"contributed_to":len(contributed_repos),"years":f"2008–{year_now}",**totals,
-        "languages":[(name,size*100/total_bytes if total_bytes else 0) for name,size in top]}
+        "languages":top}
 
 def tx(x,y,value,theme,size=12,weight=500,anchor="start"):
     """Render an escaped SVG text element with consistent typography."""
