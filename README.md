@@ -1,4 +1,5 @@
 ![Header](./banner.png)
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&duration=2500&pause=1000&color=38BDF8&center=true&vCenter=true&width=500&height=40&lines=Let's+Connect;Open+To+Collaboration;Let's+Build+Something+Amazing" />
 I'm passionate about **data and design** — I enjoy turning messy numbers into clear stories and exploring how tech can solve real problems. I like to keep learning, experimenting, and sharing what I find along the way.
 
 - **Currently exploring:** Data Analytics, AI & Creative Design
