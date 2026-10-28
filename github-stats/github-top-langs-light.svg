@@ -5,27 +5,27 @@
 <text x="24" y="32" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#1f2328" text-anchor="start">Most Used Languages</text>
 <line x1="24" y1="45" x2="436" y2="45" stroke="#6e7781" stroke-opacity=".65"/>
 <rect x="26" y="70" width="408" height="10" rx="5" fill="#f6f8fa"/>
-<rect x="26.00" y="70" width="230.00" height="10" fill="#3178c6"/>
-<rect x="256.00" y="70" width="65.12" height="10" fill="#f1e05a"/>
-<rect x="321.11" y="70" width="53.48" height="10" fill="#663399"/>
-<rect x="374.60" y="70" width="29.09" height="10" fill="#e34c26"/>
-<rect x="403.69" y="70" width="22.64" height="10" fill="#3572A5"/>
-<rect x="426.33" y="70" width="7.65" height="10" fill="#dea584"/>
+<rect x="26.00" y="70" width="230.15" height="10" fill="#3178c6"/>
+<rect x="256.15" y="70" width="65.55" height="10" fill="#f1e05a"/>
+<rect x="321.70" y="70" width="52.76" height="10" fill="#663399"/>
+<rect x="374.45" y="70" width="29.21" height="10" fill="#e34c26"/>
+<rect x="403.66" y="70" width="22.66" height="10" fill="#3572A5"/>
+<rect x="426.32" y="70" width="7.65" height="10" fill="#dea584"/>
 <circle cx="31" cy="102" r="4" fill="#3178c6"/>
 <text x="42" y="106" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start">TypeScript</text>
 <text x="218" y="106" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">56.4%</text>
 <circle cx="31" cy="136" r="4" fill="#f1e05a"/>
 <text x="42" y="140" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start">JavaScript</text>
-<text x="218" y="140" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">16.0%</text>
+<text x="218" y="140" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">16.1%</text>
 <circle cx="31" cy="170" r="4" fill="#663399"/>
 <text x="42" y="174" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start">CSS</text>
-<text x="218" y="174" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">13.1%</text>
+<text x="218" y="174" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">12.9%</text>
 <circle cx="31" cy="204" r="4" fill="#e34c26"/>
 <text x="42" y="208" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start">HTML</text>
-<text x="218" y="208" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">7.1%</text>
+<text x="218" y="208" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">7.2%</text>
 <circle cx="235" cy="102" r="4" fill="#3572A5"/>
 <text x="246" y="106" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start">Python</text>
-<text x="434" y="106" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">5.5%</text>
+<text x="434" y="106" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">5.6%</text>
 <circle cx="235" cy="136" r="4" fill="#dea584"/>
 <text x="246" y="140" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start">Rust</text>
 <text x="434" y="140" font-family="ui-sans-serif,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="end">1.9%</text>
