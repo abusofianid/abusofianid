@@ -11,23 +11,22 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 <div align="center">
 
-### Frameworks & Runtimes
+### Programming Languages
 
-<img src="https://skills.syvixor.com/api/icons?i=django,fastapi,gin,react,nextjs,bun&perline=6" alt="Frameworks and runtimes" />
+<img src="https://skills.syvixor.com/api/icons?i=python,rust,js,ts,html,css&perline=6" alt="Languages and web technologies" />
 
 ---
 
-### Languages & Web Technologies
+### Frameworks
 
-<img src="https://skills.syvixor.com/api/icons?i=python,rust,go,js,ts,html&perline=6" alt="Languages and web technologies" />
-<img src="https://skills.syvixor.com/api/icons?i=css,tailwind,rest,docker,git,github&perline=6" alt="Web technologies and tools" />
+<img src="https://skills.syvixor.com/api/icons?i=django,fastapi,react,nextjs,tailwind&perline=6" alt="Frameworks and runtimes" />
 
 ---
 
 ### Tools & Environment
 
 <img src="https://skills.syvixor.com/api/icons?i=fedora,windows,firefox,zed,astraluv,bruno&perline=6" alt="Tools and environment" />
-<img src="https://skills.syvixor.com/api/icons?i=claudeai,discord,vlc&perline=6" alt="Other tools" />
+<img src="https://skills.syvixor.com/api/icons?i=bun,docker,git,github&perline=6" alt="Other tools" />
 
 ---
 
@@ -48,5 +47,12 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 &nbsp;
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L4L81KS7EO)
+
+
+![Bitcoin Address](https://badgen.net/badge/icon/Bitcoin%20Address?icon=bitcoin&label&scale=1.3&labelColor=72a5f2&color=72a5f2)
+```text
+bc1qrqg2tcd2ql8jtgjqmky247tkycsdtrzja2cfqc
+```
+
 
 </div>
