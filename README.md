@@ -45,4 +45,8 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
   <img src="./github-stats/github-top-langs-dark.svg?v=20261021" alt="Most used programming languages across owner repositories" />
 </picture>
 
+&nbsp;
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L4L81KS7EO)
+
 </div>
