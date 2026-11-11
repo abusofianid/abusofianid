@@ -7,9 +7,13 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 - **Let's talk about:** data, visualization, or cool tech ideas
 - **Outside of work:** you'll catch me watching movies, enjoying music, or reading
 
----
+
+&nbsp;
+
 
 <div align="center">
+
+![](https://i.imgur.com/waxVImv.png)
 
 ### Programming Languages
 
@@ -26,9 +30,9 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 ### Tools & Environment
 
 <img src="https://skills.syvixor.com/api/icons?i=fedora,windows,firefox,zed,astraluv,bruno&perline=6" alt="Tools and environment" />
-<img src="https://skills.syvixor.com/api/icons?i=bun,docker,git,github&perline=6" alt="Other tools" />
+<img src="https://skills.syvixor.com/api/icons?i=bun,docker,git,github&perline=6" alt="Other tools" />  
 
----
+![](https://i.imgur.com/waxVImv.png)
 
 ### GitHub Stats · All Time
 
