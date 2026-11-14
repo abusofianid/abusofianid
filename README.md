@@ -50,10 +50,11 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 &nbsp;
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L4L81KS7EO)
-
+[![Support Me (Global)](https://badgen.net/badge/icon/Support%20Me%20(Global)?icon=githubsponsors&label&scale=1.3&labelColor=72a5f2&color=72a5f2)](https://ko-fi.com/abusofianid)
+[![Support Me (Indonesia)](https://badgen.net/badge/icon/Support%20Me%20(Indonesia)?icon=githubsponsors&label&scale=1.3&labelColor=72a5f2&color=72a5f2)](https://sociabuzz.com/abusofianid/support)  
 
 ![Bitcoin Address](https://badgen.net/badge/icon/Bitcoin%20Address?icon=bitcoin&label&scale=1.3&labelColor=72a5f2&color=72a5f2)
+
 ```text
 bc1qrqg2tcd2ql8jtgjqmky247tkycsdtrzja2cfqc
 ```
