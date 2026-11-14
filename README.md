@@ -55,10 +55,6 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 [![Support Me (Indonesia)](https://badgen.net/badge/icon/Support%20Me%20on%20SociaBuzz%20(Indonesia)?icon=githubsponsors&label&scale=1.3&labelColor=72a5f2&color=72a5f2)](https://sociabuzz.com/abusofianid/support)  
 
 ![Bitcoin Address](https://badgen.net/badge/icon/Bitcoin%20Address?icon=bitcoin&label&scale=1.3&labelColor=72a5f2&color=72a5f2)
-
-```text
-bc1qrqg2tcd2ql8jtgjqmky247tkycsdtrzja2cfqc
-```
-
+<img src="qr-bitcoin.png" alt="bitcoin" width="70%" />
 
 </div>
