@@ -50,8 +50,9 @@ I'm passionate about **data and design** — I enjoy turning messy numbers into 
 
 &nbsp;
 
-[![Support Me (Global)](https://badgen.net/badge/icon/Support%20Me%20(Global)?icon=githubsponsors&label&scale=1.3&labelColor=72a5f2&color=72a5f2)](https://ko-fi.com/abusofianid)
-[![Support Me (Indonesia)](https://badgen.net/badge/icon/Support%20Me%20(Indonesia)?icon=githubsponsors&label&scale=1.3&labelColor=72a5f2&color=72a5f2)](https://sociabuzz.com/abusofianid/support)  
+[![Support Me (Global)](https://badgen.net/badge/icon/Support%20Me%20on%20Ko-fi%20(Global)?icon=githubsponsors&label&scale=1.3&labelColor=72a5f2&color=72a5f2)](https://ko-fi.com/abusofianid)
+[![Support Me (Global)](https://badgen.net/badge/icon/Support%20Me%20on%20Paypal%20(Global)?icon=githubsponsors&label&scale=1.3&labelColor=72a5f2&color=72a5f2)](https://paypal.me/abusofianid)
+[![Support Me (Indonesia)](https://badgen.net/badge/icon/Support%20Me%20on%20SociaBuzz%20(Indonesia)?icon=githubsponsors&label&scale=1.3&labelColor=72a5f2&color=72a5f2)](https://sociabuzz.com/abusofianid/support)  
 
 ![Bitcoin Address](https://badgen.net/badge/icon/Bitcoin%20Address?icon=bitcoin&label&scale=1.3&labelColor=72a5f2&color=72a5f2)
 
